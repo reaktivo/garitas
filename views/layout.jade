@@ -1,0 +1,29 @@
+doctype html
+include header.txt
+html.no-js
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1, minimal-ui")
+    title= title
+    block opengraph
+      meta(property="og:title", content=opengraph.title)
+      meta(property="og:site_name", content=opengraph.site_name)
+      meta(property="og:url", content=opengraph.url)
+      meta(property="og:image", content=opengraph.image)
+      meta(property="og:type", content=opengraph.type)
+      meta(property="og:description", content=opengraph.description)
+    block head
+      != css('')
+      != css('app')
+      != js('/bower/modernizr-browser/modernizr-browser.js')
+      include fonts
+      include analytics
+  body
+    block content
+    script.
+      window.locals = !{JSON.stringify(locals.expose)};
+    != js('/bower/angular/angular')
+    != js('/bower/jquery/dist/jquery')
+    block scripts
+      != js('main')

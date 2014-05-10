@@ -1,0 +1,86 @@
+foreground-color = #666
+background-color = #eee
+
+header-font-family = Gotham HTF, sans-serif
+text-font-family = sans-serif
+display-font = Roboto, sans-serif
+
+body
+  color foreground-color
+  background background-color
+  font-family text-font-family
+
+h1, h2, h3, h4, h5
+  font-family header-font-family
+
+a
+  text-decoration none
+  color inherit
+  &:hover
+    color darken(foreground-color, 80%)
+
+header
+  font-family header-font-family
+  height 60px
+  font-size 14px
+  line-height @height
+  border-bottom 1px solid foreground-color
+  h1
+    font-size inherit
+    text-transform uppercase
+    font-weight normal
+    text-align center
+    margin 0
+  .controls
+    position absolute
+    top 0
+    margin 0 20px
+    &.right
+      right 0
+    &.left
+      left 0
+
+
+#reports
+  h1, h2, h3, h4, h5
+    margin 0
+
+  .fast
+    font-weight 100
+
+  .regular
+    font-weight 400
+
+  .slow
+    font-weight 900
+
+  .port
+    display inline-block
+    padding 0 10px
+    text-align center
+    &:first-child
+      margin-left 10px
+    h1
+      font-size 24px
+      font-weight normal
+      line-height 2em
+    h2
+      font-size 14px
+      line-height 2em
+      text-transform uppercase
+      border-bottom 2px solid foreground-color
+      border-top 4px solid foreground-color
+    dl
+      font-family display-font
+      margin 0
+      padding 20px 0
+      border-bottom 1px solid foreground-color
+      &:last-of-type
+        border-bottom none
+    dt
+      margin-bottom -0.2em
+    dd
+      margin 0
+      font-size 96px
+      line-height 1em
+
