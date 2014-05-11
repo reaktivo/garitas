@@ -55,7 +55,9 @@ header
     font-weight 900
 
   .port
-    display inline-block
+    float left
+    box-sizing border-box
+    width 320px
     padding 0 10px
     text-align center
     &:first-child
@@ -79,6 +81,7 @@ header
         border-bottom none
     dt
       margin-bottom -0.2em
+      text-transform capitalize
     dd
       margin 0
       font-size 96px
