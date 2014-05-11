@@ -1,6 +1,6 @@
 doctype html
 include header.txt
-html.no-js
+html.no-js(ng-app="borderApp")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -14,16 +14,17 @@ html.no-js
       meta(property="og:type", content=opengraph.type)
       meta(property="og:description", content=opengraph.description)
     block head
-      != css('')
+      link(rel="stylesheeet", href="/js/bower_components/angular/angular-csp.css")
       != css('app')
-      != js('/bower/modernizr-browser/modernizr-browser.js')
+      != js("bower_components/modernizr/modernizr")
       include fonts
       include analytics
-  body
+  body.ng-cloak
     block content
     script.
       window.locals = !{JSON.stringify(locals.expose)};
-    != js('/bower/angular/angular')
-    != js('/bower/jquery/dist/jquery')
+    != js("bower_components/angular/angular")
+    != js("bower_components/angular-resource/angular-resource")
+    != js("bower_components/jquery/dist/jquery")
     block scripts
-      != js('main')
+      != js('border_app')

@@ -6,79 +6,11 @@ block content
     .controls.right
       a(href="/login") Login
 
-  #reports
-    .port
-      h1 San Ysidro
-
-      h2 Passenger
-      dl
-        dt Standard
-        dd.slow 02:40
-      dl
-        dt Sentri
-        dd.regular 01:28
-      dl
-        dt Readylane
-        dd.fast 00:15
-
-      h2 Pedestrian
-      dl
-        dt Standard
-        dd.slow 02:40
-      dl
-        dt Sentri
-        dd.regular 01:28
-      dl
-        dt Readylane
-        dd.fast 00:15
-
-    .port
-      h1 Otay Mesa
-
-      h2 Passenger
-      dl
-        dt Standard
-        dd.slow 02:40
-      dl
-        dt Sentri
-        dd.regular 01:28
-      dl
-        dt Readylane
-        dd.fast 00:15
-
-      h2 Pedestrian
-      dl
-        dt Standard
-        dd.slow 02:40
-      dl
-        dt Sentri
-        dd.regular 01:28
-      dl
-        dt Readylane
-        dd.fast 00:15
-
-    .port
-      h1 Tecate
-
-      h2 Passenger
-      dl
-        dt Standard
-        dd.slow 02:40
-      dl
-        dt Sentri
-        dd.regular 01:28
-      dl
-        dt Readylane
-        dd.fast 00:15
-
-      h2 Pedestrian
-      dl
-        dt Standard
-        dd.slow 02:40
-      dl
-        dt Sentri
-        dd.regular 01:28
-      dl
-        dt Readylane
-        dd.fast 00:15
-
+  #reports(ng-controller="ReportController")
+    .port(ng-controller="PortController", ng-repeat="portName in ports")
+      h1 {{portName}}
+      div(ng-repeat="type in laneTypes")
+        h2 {{ type.name }}
+        dl(ng-repeat="lane in type.lanes")
+          dt {{ lane.lane }}
+          dd(ng-class="lane.delay | minutesToDelay") {{lane.delay | minutesToTime }}
