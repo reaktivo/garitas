@@ -1,0 +1,23 @@
+{
+  "name": "garitas.664.mx",
+  "version": "0.0.0",
+  "authors": [
+    "reaktivo <m@reaktivo.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "modernizr-browser": "~1.0.0",
+    "jquery": "~2.1.1",
+    "modernizr": "~2.8.1",
+    "angular": "~1.2.16",
+    "angular-resource": "~1.2.x",
+    "underscore": "~1.6.0",
+    "underscore.string": "~2.3.3"
+  }
+}
