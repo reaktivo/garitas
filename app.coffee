@@ -18,11 +18,11 @@ app.set 'view engine', 'jade'
 
 # Setup middleware
 app.use serve join __dirname, 'public'
-app.use '/bower', serve join __dirname, 'bower_components'
+app.use serve join __dirname, 'assets'
 app.use logger('dev')
+app.use assets(helperContext: app.locals)
 app.use bodyParser()
 app.use methodOverride()
-app.use assets(helperContext: app.locals)
 
 load 'routes'
   .then 'locals'
