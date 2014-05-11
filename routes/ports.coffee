@@ -7,8 +7,6 @@ reports = []
 
 update = ->
   border.ports().then (reps) ->
-    console.log 'Updated reports'
-    console.log pluck reps, 'updated_at'
     reports = reps
 
 do update
@@ -16,9 +14,9 @@ do update
 module.exports = (app) ->
   app.locals.reports = reports
 
-  app.get '/:port', (req, res, next) ->
+  app.get '/ports/:port', (req, res, next) ->
     foundReports = where reports, { port: req.params.port }
     if foundReports.length is 0
       do next
     else
-      res.send groupBy foundReports, 'port'
+      res.send foundReports
