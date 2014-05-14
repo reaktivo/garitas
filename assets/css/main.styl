@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5
 a
   text-decoration none
   color inherit
+  cursor pointer
   &:hover
     color darken(foreground-color, 80%)
 
@@ -40,6 +41,10 @@ header
     &.left
       left 0
 
+  .user
+    img
+      border-radius 50px
+      margin-left 20px
 
 #reports
   h1, h2, h3, h4, h5
@@ -72,18 +77,91 @@ header
       text-transform uppercase
       border-bottom 2px solid foreground-color
       border-top 4px solid foreground-color
-    dl
-      font-family display-font
-      margin 0
-      padding 20px 0
-      border-bottom 1px solid foreground-color
-      &:last-of-type
-        border-bottom none
-    dt
+    h3
       margin-bottom -0.2em
       text-transform capitalize
-    dd
+      font-weight normal
+      font-size 14px
+    .lane
+      font-family display-font
       margin 0
-      font-size 96px
-      line-height 1em
+      padding 20px 0 0
+      border-bottom 1px solid foreground-color
+      .switch-mode
+        color inherit
+        line-height 2em
+        font-style italic
+        font-weight 200
+        font-size 14px
 
+      &.report-mode
+        color background-color
+        background foreground-color
+      &:last-of-type
+        border-bottom none
+      .delay
+        margin 0
+        font-size 96px
+        line-height 1em
+
+.user-report
+  border 1px solid foreground-color
+  border-left none
+  border-right none
+  border-bottom none
+  position relative
+  overflow hidden
+  height 48px
+  transition all ease-in-out 0.5s
+  -webkit-transition @transition
+  -moz-transition @transition
+  &.ng-hide
+    height 0
+  &.ng-hide-add,
+  &.ng-hide-remove
+    display block !important
+  .controls
+    position absolute
+    bottom 0
+    width 100%
+    height @height
+    button
+      appearance none
+      -webkit-appearance appearance
+      -moz-appearance appearance
+      -webkit-user-select none
+      -moz-user-select none
+      -khtml-user-select none
+      -ms-user-select none
+      user-select none
+      -webkit-transition all ease-in-out 0.2s
+      -moz-transition all ease-in-out 0.2s
+      transition all ease-in-out 0.2s
+      outline 0
+      font-size 16px
+      height @height
+      width 25%
+      box-sizing border-box
+      border none
+      border-right 1px solid background-color
+      padding 0
+      color inherit
+      background none
+      font-family inherit
+      cursor pointer
+      &:hover
+        color background-color
+        background foreground-color
+      &:active
+        background darken(foreground-color, 50%)
+      &:last-child
+        border-right none
+      &[disabled]
+        color rgba(background-color, 0.6)
+        cursor default
+        pointer-events none
+
+.report-mode .user-report
+  border-color background-color
+  a
+    border-color @border-color !important

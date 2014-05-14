@@ -1,16 +1,28 @@
 extends layout
 
 block content
-  header
-    h1 Reporte de Garitas
-    .controls.right
-      a(href="/login") Login
+  div(ng-controller="MainController")
+    header
+      h1 Reporte de Garitas
+      .controls.right
+        .user(ng-if="user")
+          span.name {{user.first_name}}
+          img(ng-src="http://graph.facebook.com/{{user.id}}/picture")
+        a(ng-if="!user" ng-click="login()") Login
 
-  #reports(ng-controller="ReportController")
-    .port(ng-controller="PortController", ng-repeat="portName in ports")
-      h1 {{portName}}
-      div(ng-repeat="type in laneTypes")
-        h2 {{ type.name }}
-        dl(ng-repeat="lane in type.lanes")
-          dt {{ lane.lane }}
-          dd(ng-class="lane.delay | minutesToDelay") {{lane.delay | minutesToTime }}
+    #reports
+      .port(ng-controller="PortController", ng-repeat="portName in ports")
+        h1 {{portName}}
+        div(ng-repeat="type in laneTypes")
+          h2 {{ type.name }}
+          .lane(ng-repeat="lane in type.lanes", ng-controller="LaneController", ng-class="{'report-mode': reportMode}")
+            h3 {{ lane.lane }}
+            p.delay(ng-class="(reportMode ? report.delay : lane.delay) | minutesToDelay").
+              {{ (reportMode ? report.delay : lane.delay) | minutesToTime }}
+            a.switch-mode(ng-click="switchMode()") Is this innacurate?
+            .user-report(ng-controller="UserReportController", ng-show="reportMode")
+              .controls
+                button(ng-click="subtract()", ng-disabled="report.delay == minDelay") —
+                button(ng-click="add()", ng-disabled="report.delay == maxDelay") +
+                button(ng-click="submit()", ng-disabled="report.delay == lane.delay") Submit
+                button(ng-click="cancel()") Cancel
