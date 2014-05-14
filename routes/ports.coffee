@@ -16,7 +16,4 @@ module.exports = (app) ->
 
   app.get '/ports/:port', (req, res, next) ->
     foundReports = where reports, { port: req.params.port }
-    if foundReports.length is 0
-      do next
-    else
-      res.send foundReports
+    res.send foundReports
