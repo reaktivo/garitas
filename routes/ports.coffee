@@ -1,9 +1,7 @@
-BorderWait = require 'border-wait'
-border = new BorderWait()
+border = require 'border-wait'
 _ = require 'underscore'
-{ where, pluck, groupBy } = _
+{ where } = _
 reports = []
-
 
 update = ->
   border.ports().then (reps) ->
