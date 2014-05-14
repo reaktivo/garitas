@@ -23,8 +23,5 @@ html.no-js(ng-app="borderApp")
     block content
     script.
       window.locals = !{JSON.stringify(locals.expose)};
-    != js("bower_components/angular/angular")
-    != js("bower_components/angular-resource/angular-resource")
-    != js("bower_components/jquery/dist/jquery")
     block scripts
       != js('border_app')
