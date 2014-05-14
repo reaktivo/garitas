@@ -8,7 +8,7 @@ reports = []
 update = ->
   border.ports().then (reps) ->
     reports = reps
-
+    setTimeout update, 2 * 60000
 do update
 
 module.exports = (app) ->
