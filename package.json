@@ -33,6 +33,7 @@
     "pg": "~3.0.3",
     "border-wait": "~0.6.0",
     "eventemitter2": "~0.4.13"
+    "signed-request": "~1.0.7",
   },
   "devDependencies": {},
   "optionalDependencies": {}

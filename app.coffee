@@ -8,6 +8,7 @@ bodyParser = require 'body-parser'
 methodOverride = require 'method-override'
 serve = require 'serve-static'
 load = require 'express-load'
+cookie = require 'cookie-parser'
 assets = require 'connect-assets'
 
 # Configuration
@@ -21,11 +22,12 @@ app.use serve join __dirname, 'public'
 app.use serve join __dirname, 'assets'
 app.use logger('dev')
 app.use assets(helperContext: app.locals)
+app.use cookie()
 app.use bodyParser()
 app.use methodOverride()
 
-load 'routes'
-  .then 'locals'
+load 'locals'
+  .then 'routes'
   .into app
 
 # Find port to listen to, then listen
