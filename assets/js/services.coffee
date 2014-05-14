@@ -7,9 +7,13 @@ transformResponse = (ports) ->
   map groupBy(ports, 'type'), (lanes, name) ->
     { lanes, name }
 
-angular.module('services', ['ngResource'])
+angular.module('services', ['ngResource', 'auth'])
 
   .factory 'Port', ($resource) ->
     params = { port: 'defaults' }
     actions = query: { transformResponse, isArray: yes }
     $resource 'ports/:port', params, actions
+
+  .factory 'Report', ($resource) ->
+    $resource 'report'
+
