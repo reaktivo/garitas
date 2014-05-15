@@ -93,7 +93,6 @@ header
         font-style italic
         font-weight 200
         font-size 14px
-
       &.report-mode
         color background-color
         background foreground-color
@@ -109,8 +108,10 @@ header
   border-left none
   border-right none
   border-bottom none
+  background foreground-color
   position relative
   overflow hidden
+
   height 48px
   transition all ease-in-out 0.5s
   -webkit-transition @transition
@@ -146,14 +147,18 @@ header
       border-right 1px solid background-color
       padding 0
       color inherit
-      background none
+      background transparent
       font-family inherit
       cursor pointer
+      &.text
+        font-size 12px
+        text-transform uppercase
+        font-weight 500
       &:hover
         color background-color
-        background foreground-color
-      &:active
         background darken(foreground-color, 50%)
+      &:active
+        background darken(foreground-color, 100%)
       &:last-child
         border-right none
       &[disabled]
