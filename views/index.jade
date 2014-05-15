@@ -19,10 +19,10 @@ block content
             h3 {{ lane.lane }}
             p.delay(ng-class="(reportMode ? report.delay : lane.delay) | minutesToDelay").
               {{ (reportMode ? report.delay : lane.delay) | minutesToTime }}
-            a.switch-mode(ng-click="switchMode()") Is this innacurate?
+            a.switch-mode(ng-click="switchMode(true)") Is this innacurate?
             .user-report(ng-controller="UserReportController", ng-show="reportMode")
               .controls
                 button(ng-click="subtract()", ng-disabled="report.delay == minDelay") —
                 button(ng-click="add()", ng-disabled="report.delay == maxDelay") +
-                button(ng-click="submit()", ng-disabled="report.delay == lane.delay") Submit
-                button(ng-click="cancel()") Cancel
+                button.text(ng-click="switchMode(false)") Cancel
+                button.text(ng-click="submit()", ng-disabled="report.delay == lane.delay") Submit

@@ -27,9 +27,6 @@ angular.module 'controllers', ['services', 'auth']
     $scope.submit = ->
       $scope.report.$save()
 
-    $scope.cancel = ->
-      $scope.switchMode()
-
     $scope.add = ->
       $scope.report.delay += 10
       if $scope.report.delay > $scope.maxDelay
