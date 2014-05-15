@@ -1,0 +1,24 @@
+foreground-color = #666
+background-color = #eee
+
+body
+  font-family Roboto, sans-serif
+  color foreground-color
+  background background-color
+
+.report-mode
+  color background-color !important
+  background foreground-color !important
+
+button
+  &:hover
+    background darken(foreground-color, 50%) !important
+  &:active
+    background darken(foreground-color, 100%) !important
+  &[disabled]
+    color rgba(background-color, 0.6) !important
+
+header
+  box-shadow 0 0 5px rgba(0,0,0,0.2)
+  margin-bottom 40px
+  background darken(background-color, 10%)
