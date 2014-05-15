@@ -12,9 +12,11 @@ angular.module 'controllers', ['services', 'auth']
     $scope.laneTypes = Port.query { port: $scope.portName }
 
   .controller 'LaneController', ($scope, Report) ->
-    $scope.switchMode = ->
-      $scope.reportMode = not $scope.reportMode
-      if $scope.reportMode
+    $scope.switchMode = (mode) ->
+      return $scope.login() unless $scope.user
+      mode = not $scope.reportMode if mode is undefined
+      $scope.reportMode = mode
+      if mode and $scope.report is undefined
         $scope.report = new Report(pick $scope.lane, 'port', 'type', 'lane', 'delay')
 
   .controller 'UserReportController', ($scope, Report) ->
