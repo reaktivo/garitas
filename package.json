@@ -30,7 +30,8 @@
     "serve-static": "~1.0.4",
     "cookie-session": "~1.0.1",
     "express-load": "~1.1.9",
-    "signed-request": "~1.0.7"
+    "signed-request": "~1.0.7",
+    "border-reporter": "~0.1.0"
   },
   "devDependencies": {},
   "optionalDependencies": {}
