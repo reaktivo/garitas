@@ -1,8 +1,9 @@
+secrets = require '../secrets'
 { extend } = require 'underscore'
 
-BorderReporter = require('border-reporter')
-reporter = BorderReporter('postgres://localhost:5432/garitas')
-
+reporter = require('border-reporter')
+  connection: 'postgres://localhost:5432/garitas'
+  privileged: secrets.PRIVILEGED_USERS
 
 module.exports = (app) ->
 
