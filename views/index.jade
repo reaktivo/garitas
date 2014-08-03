@@ -11,10 +11,9 @@ block content
         a(ng-if="!user" ng-click="login()") Login
 
     #reports
-      .port(ng-controller="PortController", ng-repeat="portName in ports")
-        h1 {{portName}}
+      .port(ng-controller="PortController", ng-repeat="port_id in ports")
         div(ng-repeat="type in laneTypes")
-          h2 {{ type.name }}
+          h2 {{type.port}} — {{ type.name }}
           .lane(ng-repeat="lane in type.lanes", ng-controller="LaneController", ng-class="{'report-mode': reportMode}")
             h3 {{ lane.lane }}
             p.delay(ng-class="(reportMode ? report.delay : lane.delay) | minutesToDelay").
