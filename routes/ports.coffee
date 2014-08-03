@@ -12,6 +12,6 @@ do update
 module.exports = (app) ->
   app.locals.reports = reports
 
-  app.get '/ports/:port', (req, res, next) ->
-    foundReports = where reports, { port: req.params.port }
+  app.get '/ports', (req, res, next) ->
+    foundReports = where reports, { port_id: req.query.port_id }
     res.send foundReports

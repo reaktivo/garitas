@@ -2,22 +2,25 @@
 
 { pick } = _
 
+reportKeys = ['port_id', 'port', 'crossing', 'type', 'lane', 'delay']
+
 angular.module 'controllers', ['services', 'auth']
 
   .controller 'MainController', ($scope, Facebook) ->
-    $scope.ports = ['San Ysidro', 'Otay Mesa', 'Tecate']
+    $scope.ports = [ '250401', '250601', '250501']
     $scope.login = Facebook.login
 
   .controller 'PortController', ($scope, Port) ->
-    $scope.laneTypes = Port.query { port: $scope.portName }
+    $scope.laneTypes = Port.query { port_id: $scope.port_id }
 
   .controller 'LaneController', ($scope, Report) ->
+
     $scope.switchMode = (mode) ->
       return $scope.login() unless $scope.user
       mode = not $scope.reportMode if mode is undefined
       $scope.reportMode = mode
       if mode and $scope.report is undefined
-        $scope.report = new Report(pick $scope.lane, 'port', 'type', 'lane', 'delay')
+        $scope.report = new Report(pick $scope.lane, reportKeys)
 
   .controller 'UserReportController', ($scope, Report) ->
 
