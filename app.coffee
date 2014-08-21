@@ -1,4 +1,5 @@
 { join } = require 'path'
+secrets = require './secrets'
 
 express = require 'express'
 
@@ -29,6 +30,10 @@ app.use methodOverride()
 load 'locals'
   .then 'routes'
   .into app
+
+app.reporter = require('border-reporter')
+  connection: secrets.PG_DB
+  privileged: secrets.PRIVILEGED_USERS
 
 # Find port to listen to, then listen
 app.listen app.get 'port'
