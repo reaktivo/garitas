@@ -1,6 +1,8 @@
 garitas
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/reaktivo/garitas.svg)](https://greenkeeper.io/)
+
 Installation instructions
 _______
 
